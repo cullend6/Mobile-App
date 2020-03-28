@@ -1,7 +1,17 @@
 import React from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
 
-const FormSwitch = ({ label, valueKey, value, onChange, prevState }) => {
+type Props = {
+    label: string,
+    valueKey: string,
+    value: any,
+    onChange: any,
+    prevState?: any,
+}
+
+const FormSwitch = (props: Props) => {
+    const { label, valueKey, value, onChange, prevState } = props;
+
     return (
         <View style={{ 
             height: 50,

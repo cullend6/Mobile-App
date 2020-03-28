@@ -1,7 +1,16 @@
 import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 
-const FormAmount = ({ label, value, valueKey, onChange }) => {
+type Props = {
+    label: string,
+    valueKey: string,
+    value: any,
+    onChange: any,
+}
+
+const FormAmount = (props: Props) => {
+    const { label, value, valueKey, onChange } = props;
+    
     return (
         <View
         style={{
