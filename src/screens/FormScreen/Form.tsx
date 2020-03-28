@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, Button, ToastAndroid } from 'react-native';
+import { Button, ToastAndroid, KeyboardAvoidingView, View } from 'react-native';
 
 import FormSwitch from '../../components/FormSwitch';
 import FormAmount from '../../components/FormAmount';
 
 import { styles } from './FormStyles';
 import { TextInput } from 'react-native-gesture-handler';
+
+import { save, getAllKeys } from '../../utils/storageUtils';
+import { dateKey } from '../../utils/utils';
 
 export const DetailInfo = {
     TAKEN_TABLETS: {
@@ -57,7 +60,15 @@ const DefaultState = {
     notes: '',
 };
 
-const FormInput = ({ value, label, valueKey, type, updateDetails }) => {
+enum DetailKeys {
+    NOTES = 'notes',
+}
+
+const addSummary = async (payload: any) => {
+    await save(dateKey(), payload);
+}
+
+const FormInput = ({ value, label, valueKey, type, updateDetails }: any) => {
 
     if (type === 'Amount') {
         return <FormAmount
@@ -99,12 +110,13 @@ const Form = () => {
             return;
         }
 
+        addSummary(details);
         setDetails(DefaultState);
     };
 
     const buildForm = () => {
         const keys = Object.keys(DetailInfo);
-        const fields = keys.map(infoKey => {
+        const fields = keys.map((infoKey, i) => {
             const { label, key, type } = DetailInfo[infoKey];
             return <FormInput
                 label={label}
@@ -112,13 +124,17 @@ const Form = () => {
                 value={details[key]}
                 updateDetails={updateDetails}
                 type={type}
+                key={i}
             />
         })
         return fields;
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior='padding'
+        >
             {buildForm().map(field => field)}
             <TextInput
                 value={details.notes}
@@ -131,10 +147,11 @@ const Form = () => {
                     textAlignVertical: 'top',
                     borderWidth: 0.5,
                     borderColor: '#d6d7da',
+                    marginTop: 20,
                 }}
             />
             <Button title='Submit' onPress={() => handleSubmit()} />
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 

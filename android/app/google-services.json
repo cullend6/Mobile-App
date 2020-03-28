@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "944019328307",
+    "firebase_url": "https://mobileproject-7748c.firebaseio.com",
+    "project_id": "mobileproject-7748c",
+    "storage_bucket": "mobileproject-7748c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944019328307:android:9c3d6a0791825bca9e4246",
+        "android_client_info": {
+          "package_name": "com.dancullen.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944019328307-ta7iks3stpgvd50omvbuigos8uad0hcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc_6VX6EFMUNHYgLNvjD-R6GIePWsRPnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944019328307-ta7iks3stpgvd50omvbuigos8uad0hcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

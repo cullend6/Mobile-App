@@ -25,6 +25,12 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
-  }
+    },
+    "android": {
+      "package": "com.dancullen.mobileapp"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "Tracker",
+  "name": "MobileTrackerApp"
 }

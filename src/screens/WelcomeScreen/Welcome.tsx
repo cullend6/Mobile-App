@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Text, View, Button } from 'react-native';
 import { styles } from './WelcomeStyles';
 
-const Welcome = ({ navigation }) => {
-    const body = () => {
+type Props = {
+    navigation: any,
+}
+
+const Welcome = (props: Props) => {
+    const { navigation } = props;
+    
+    const greeting = useMemo(() => {
         const time = new Date().getHours();
         if (time < 12) {
             return <Text>Good morning Una.</Text>
@@ -14,12 +20,13 @@ const Welcome = ({ navigation }) => {
         } else {
             return <Text>Good evening Una.</Text>
         }
-    }
+    }, []);
 
     return (
         <View style={styles.container} >
-            {body()}
+            {greeting}
             <Button title='Go' onPress={() => navigation.navigate('Form')}/>
+            <Button title='Calendar' onPress={() => navigation.navigate('Calendar')}/>
         </View>
     )
 }
